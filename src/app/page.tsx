@@ -1,91 +1,102 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import AccountBenefit from "@/components/auth/AccountBenefit.component";
+import SocialConnect from "@/components/auth/SocialConnect.component";
+import Navbar from "@/components/blocks/Navbar.block";
+import Logo from "@/components/branding/Logo.component";
+import Button from "@/components/core/Button.component";
+import Card from "@/components/core/Card.component";
+import Input from "@/components/core/Input.component";
+import Section from "@/components/core/Section.component";
+import Text from "@/components/core/Text.component";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <Navbar />
+      <Section className="h-[88vh] flex items-center">
+        <div className="w-8/12 mx-auto grid grid-cols-12 gap-x-12 -mt-24">
+          <div className="col-span-6">
+            <div className="mb-12">
+              <Text as="h1" variant="h2" className="!text-neutral-900">
+                WeCare Health
+              </Text>
+              <Text>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Text>
+            </div>
+
+            <div className="flex flex-col gap-y-8 lg:!max-w-sm 2xl:!max-w-md">
+              <AccountBenefit title="Programare online in 5 minute">
+                Nu te mai astepta la coada telefonica. Inscrie-te acum si
+                programeaza-te in cateva minute
+              </AccountBenefit>
+
+              <AccountBenefit title="Documentele tale sunt in siguranta">
+                Poti sa accesezi toate documentele oferite de medic de oriunde
+                din lume.
+              </AccountBenefit>
+
+              <AccountBenefit title="Suport chat">
+                Nu ai o problema serioasa? Intreaba-ti medicul cum ai putea
+                remedia situatia prin chat-ul nostru online.
+              </AccountBenefit>
+            </div>
+          </div>
+          <div className="col-span-6">
+            <Card className="bg-white flex flex-col gap-y-6">
+              <Text as="h3" className="text-neutral-900">
+                Bine ai revenit!
+              </Text>
+
+              <div className="grid grid-cols-2 gap-x-6">
+                <SocialConnect className="w-full" social="Google" />
+                <SocialConnect className="w-full" social="GitHub" />
+              </div>
+
+              <div className="flex items-center gap-x-2">
+                <hr className="w-full border-[1px] rounded-full" />
+
+                <Text as="span" className="!text-gray-500">
+                  SAU
+                </Text>
+
+                <hr className="w-full border-[1px] rounded-full" />
+              </div>
+
+              <div className="flex flex-col gap-y-4">
+                <Input
+                  name="authEmail"
+                  type="email"
+                  label={"Email"}
+                  placeholder="Enter your email"
+                  className="w-full"
+                />
+
+                <Input
+                  name="authPassword"
+                  type="password"
+                  label={"Password"}
+                  placeholder="Enter your password"
+                  className="w-full"
+                />
+
+                <div>
+                  <Button className="!w-full mt-6">Autentifica-te acum</Button>
+
+                  <Text as="span" className="mt-3 block">
+                    Nu ai un cont?{" "}
+                    <Link href="/client/sign-up">
+                      <span className="text-primary-600">
+                        Inregistreaza-te acum!
+                      </span>
+                    </Link>
+                  </Text>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+      </Section>
+    </div>
+  );
 }
