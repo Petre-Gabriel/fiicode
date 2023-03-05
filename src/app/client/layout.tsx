@@ -7,14 +7,13 @@ export default function ClientPortalLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className="grid gap-x-4"
-      style={{ gridTemplateColumns: "16rem 1fr 1fr" }}
-    >
+    <div className="grid" style={{ gridTemplateColumns: "16rem 1fr" }}>
+      <Sidebar />
+
       <div>
-        <Sidebar />
+        <nav className="w-full h-16 bg-white shadow mb-8"></nav>
+        <main className="px-4">{children}</main>
       </div>
-      <div>{children}</div>
     </div>
   );
 }

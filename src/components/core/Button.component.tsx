@@ -25,7 +25,7 @@ const Button = ({
     {
       "bg-primary hover:bg-primary-700 ring-0 ring-offset-primary-200 ring-offset-0 focus:ring":
         color === "primary",
-      "bg-transparent hover:bg-gray-100 !text-gray-700": color === "none",
+      "bg-transparent hover:bg-gray-100/75 !text-gray-700": color === "none",
     },
     className
   );

@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="flex gap-x-6 justify-center items-center">
         <NavbarLink href="/">home</NavbarLink>
         <NavbarLink href="/">about us</NavbarLink>
-        <NavbarLink href="/">client portal</NavbarLink>
+        <NavbarLink href="/client">client portal</NavbarLink>
       </div>
 
       <div className="flex gap-x-3 justify-end items-center">
