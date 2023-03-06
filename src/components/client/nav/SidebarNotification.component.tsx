@@ -31,7 +31,7 @@ const SidebarNotification = ({
   );
 
   return (
-    <div className="bg-gray-100 p-4 rounded">
+    <div className="bg-slate-100 p-4 rounded">
       <div className="flex justify-between mb-3">
         <Label color={color}>{label}</Label>
 
