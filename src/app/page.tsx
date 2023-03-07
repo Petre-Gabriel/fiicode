@@ -42,13 +42,14 @@ export default function HomePage() {
               </AccountBenefit>
             </div>
           </div>
+
           <div className="col-span-6">
-            <Card className="bg-white flex flex-col gap-y-6">
+            <Card contentClass="flex flex-col gap-6">
               <Text as="h3" className="text-neutral-900">
                 Bine ai revenit!
               </Text>
 
-              <div className="grid grid-cols-2 gap-x-6">
+              <div className="grid grid-cols-2 gap-x-2">
                 <SocialConnect className="w-full" social="Google" />
                 <SocialConnect className="w-full" social="GitHub" />
               </div>

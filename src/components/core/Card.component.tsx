@@ -6,9 +6,10 @@ interface CardProps {
 
   children?: React.ReactNode;
   className?: string;
+  contentClass?: string;
 }
 
-const Card = ({ children, className, title }: CardProps) => {
+const Card = ({ children, className, contentClass, title }: CardProps) => {
   const CardClass = classNames(
     "p-8 border border-gray-100 shadow-card rounded bg-white",
     className
@@ -24,7 +25,7 @@ const Card = ({ children, className, title }: CardProps) => {
         </div>
       )}
 
-      <div>{children}</div>
+      <div className={contentClass}>{children}</div>
     </div>
   );
 };

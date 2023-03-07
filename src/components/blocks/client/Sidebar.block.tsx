@@ -1,7 +1,10 @@
+"use client";
+
 import SidebarLinkGroup from "@/components/client/nav/SidebarLinkGroup.component";
 import SidebarNotification from "@/components/client/nav/SidebarNotification.component";
 import Button from "@/components/core/Button.component";
 import Text from "@/components/core/Text.component";
+import { usePathname } from "next/navigation";
 import {
   FiActivity,
   FiArchive,
@@ -10,12 +13,23 @@ import {
   FiPhone,
   FiPieChart,
   FiSliders,
-  FiUser,
   FiUsers,
 } from "react-icons/fi";
 import SidebarLink from "../../client/nav/SidebarLink.component";
 
 export default function Sidebar() {
+  const routePath = usePathname();
+
+  function isLinkActive(linkName: string): boolean {
+    const activeLinkName = routePath.split("/")[2] ?? "/";
+
+    if (linkName === "home" && activeLinkName === "/") return true;
+
+    if (linkName.toLowerCase() === activeLinkName.toLowerCase()) return true;
+
+    return false;
+  }
+
   return (
     <aside className="sticky left-0 top-0 z-10 bg-white w-full h-[100vh] w-fit px-2.5 py-4 shadow flex flex-col justify-between">
       <div className="flex flex-col gap-y-8">
@@ -37,17 +51,47 @@ export default function Sidebar() {
         </div>
 
         <SidebarLinkGroup>
-          <SidebarLink active href="/client" title="Acasa" icon={FiPieChart} />
-          <SidebarLink href="/client" title="Pacienti" icon={FiUsers} />
-          <SidebarLink href="/client" title="Medici" icon={FiActivity} />
-          <SidebarLink href="/client" title="Documente" icon={FiArchive} />
-          <SidebarLink href="/client" title="Programari" icon={FiCalendar} />
-          <SidebarLink href="/client" title="Contacteaza-ne" icon={FiPhone} />
+          <SidebarLink
+            active={isLinkActive("home")}
+            href="/client"
+            title="Acasa"
+            icon={FiPieChart}
+          />
+          <SidebarLink
+            active={isLinkActive("patients")}
+            href="/client/patients"
+            title="Pacienti"
+            icon={FiUsers}
+          />
+          <SidebarLink
+            active={isLinkActive("medics")}
+            href="/client"
+            title="Medici"
+            icon={FiActivity}
+          />
+          <SidebarLink
+            active={isLinkActive("documents")}
+            href="/client"
+            title="Documente"
+            icon={FiArchive}
+          />
+          <SidebarLink
+            active={isLinkActive("appointments")}
+            href="/client"
+            title="Programari"
+            icon={FiCalendar}
+          />
+          <SidebarLink
+            active={isLinkActive("contact")}
+            href="/client"
+            title="Contacteaza-ne"
+            icon={FiPhone}
+          />
         </SidebarLinkGroup>
 
         <SidebarLinkGroup title="Despre cont">
           <SidebarLink
-            href="/client/settings"
+            href="/client/account"
             title="Setari cont"
             icon={FiSliders}
           />
