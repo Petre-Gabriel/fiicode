@@ -3,29 +3,8 @@
 import { DummyPatient } from "@/components/client/patient/Patient.data";
 import PatientProblem from "@/components/client/patient/PatientProblem.component";
 import Card from "@/components/core/Card.component";
-import {
-  Chart as ChartJS,
-  LineElement,
-  LinearScale,
-  Title,
-  CategoryScale,
-  PointElement,
-  Tooltip,
-  Legend,
-  BarElement,
-} from "chart.js";
+import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
-
-ChartJS.register(
-  BarElement,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  Title
-);
 
 export default function ClientPortal() {
   return (
