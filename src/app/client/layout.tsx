@@ -12,7 +12,7 @@ export default function ClientPortalLayout({
 
       <div>
         <nav className="w-full h-16 bg-white shadow mb-8"></nav>
-        <main className="px-4 !pb-8">{children}</main>
+        <main className="px-12 !pb-8">{children}</main>
       </div>
     </div>
   );

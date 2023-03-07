@@ -3,13 +3,14 @@
 import { DummyPatient } from "@/components/client/patient/Patient.data";
 import PatientProblem from "@/components/client/patient/PatientProblem.component";
 import Card from "@/components/core/Card.component";
+import ClientGrid from "@/components/layout/ClientGrid.component";
 import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 
 export default function ClientPortal() {
   return (
     <div>
-      <div className="grid grid-cols-12 gap-4">
+      <ClientGrid>
         <Card title="Statistici Generale" className="col-span-7">
           <div className="w-full mx-auto">
             <Chart
@@ -53,7 +54,7 @@ export default function ClientPortal() {
         </Card>
 
         <Card title="sdsdsd" className="col-span-12"></Card>
-      </div>
+      </ClientGrid>
     </div>
   );
 }

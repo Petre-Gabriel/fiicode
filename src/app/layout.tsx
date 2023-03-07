@@ -26,7 +26,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#F8FAFA]">
-        <main className="text-gray-600">{children}</main>
+        <main className="text-slate-700">{children}</main>
       </body>
     </html>
   );

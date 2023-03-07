@@ -19,7 +19,7 @@ const SidebarLink = ({
   icon: ReactIcon,
 }: SidebarLinkProps) => {
   const ButtonClass = classNames(
-    "flex items-center !text-base !w-full !p-2 group hover:!bg-primary-100[.1]",
+    "flex items-center !justify-start !text-base !w-full !p-2 group hover:!bg-primary-100[.1]",
     active && "!bg-primary-100/[.1]"
   );
 
