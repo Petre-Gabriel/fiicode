@@ -3,14 +3,33 @@ import Patient, {
 } from "@/components/client/patient/Patient.data";
 import Button from "@/components/core/Button.component";
 import Card from "@/components/core/Card.component";
+import Input from "@/components/core/Input.component";
 import Link from "next/link";
-import { FiCalendar, FiUser } from "react-icons/fi";
+import { FiCalendar, FiPlus, FiSearch, FiUser } from "react-icons/fi";
 
 export default function PatientsPage() {
   return (
     <div>
       <Card title="Pacientii Dvs.">
         <div className="w-full">
+          <div className="flex flex-col gap-y-4">
+            <Button color="green">
+              <FiPlus />
+              Adauga un nou pacient
+            </Button>
+            <div className="flex gap-x-3 mb-4">
+              <Input
+                type="text"
+                name="pacientName"
+                placeholder="Cauta pacientul dupa nume sau email"
+                className="w-full"
+              />
+              <Button>
+                <FiSearch />
+              </Button>
+            </div>
+          </div>
+
           <table className="table-auto w-full">
             <thead>
               <tr className="text-left bg-neutral-900 text-white">
@@ -56,7 +75,6 @@ export default function PatientsPage() {
                       </Button>
                     </Link>
                     <Button
-                      color="green"
                       size="small"
                       className="flex gap-x-2 items-center"
                       tooltip="Programeaza pacient"

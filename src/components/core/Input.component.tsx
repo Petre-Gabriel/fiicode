@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 interface InputProps {
-  label: string;
+  label?: string;
   name: string;
 }
 
@@ -14,15 +14,17 @@ const Input = ({ label, name, className, ...props }: FullInputProps) => {
   );
 
   return (
-    <div>
-      <label
-        htmlFor={name}
-        className="block text-neutral-700 font-medium text-base mb-2"
-      >
-        {label}
-      </label>
+    <>
+      {label && (
+        <label
+          htmlFor={name}
+          className="block text-neutral-700 font-medium text-base mb-2"
+        >
+          {label}
+        </label>
+      )}
       <input className={InputClass} name={name} id={name} {...props} />
-    </div>
+    </>
   );
 };
 
