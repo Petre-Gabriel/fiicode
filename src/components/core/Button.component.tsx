@@ -55,7 +55,7 @@ const Button = ({
       {children}
 
       {tooltip && (
-        <div className="absolute z-50 w-max pointer-events-none opacity-0 group-hover:opacity-100 top-[100%] mt-1 left-1/2 -translate-x-1/2">
+        <div className="absolute z-50 outline-none w-max pointer-events-none opacity-0 group-hover:opacity-100 top-[100%] mt-1 left-1/2 -translate-x-1/2">
           <IoTriangleSharp className="mx-auto text-slate-900 translate-y-[3px]" />
           <div className="block transition-all py-2 px-4 rounded text-white bg-zinc-900">
             {tooltip}

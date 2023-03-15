@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { FiThumbsUp } from "react-icons/fi";
+import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import Button from "./Button.component";
 import Card from "./Card.component";
 import Text from "./Text.component";
@@ -14,6 +14,7 @@ export default function Modal({
   showDenyButton,
   denyButtonText = "Cancel",
   onClose,
+  onConfirm,
 }: {
   children?: React.ReactNode;
   open?: boolean;
@@ -23,24 +24,43 @@ export default function Modal({
   confirmButtonText?: string;
   denyButtonText?: string;
   onClose: () => void;
+  onConfirm?: () => void;
 }) {
   const ModalClass = classNames(
-    "min-w-[35vw] max-w-[75vw] !shadow-none transition-all",
+    "relative min-w-[35vw] max-w-[75vw] max-h-[80vh] overflow-y-scroll !shadow-none transition-all text-center",
     open === false && "pointer-events-none opacity-0"
   );
+
   const ModalWrapperClass = classNames(
     "fixed z-30 transition-all w-full h-full left-0 top-0 flex justify-center items-center bg-black/25 backdrop-blur-sm",
     open === false &&
       "pointer-events-none bg-transparent opacity-0 duration-150 delay-[100ms]"
   );
 
+  /*
+    Callback for the deny button, close button, or ESC key down event
+  */
+  const closeModal = React.useCallback(() => {
+    if (onClose) onClose();
+  }, [onClose]);
+
+  /*
+    This callback is called when the confirm button is clicked
+    */
+  const confirmModalAction = React.useCallback(() => {
+    if (onConfirm) onConfirm();
+  }, [onConfirm]);
+
+  /*
+    We add an eventListener for the ESC button to close the modal
+  */
   React.useEffect(() => {
     function handleModalClose(e: KeyboardEvent) {
       if (open === false) return;
 
       if (e.key !== "Escape") return;
 
-      if (onClose) onClose();
+      closeModal();
     }
 
     document.addEventListener("keydown", handleModalClose, { passive: true });
@@ -48,13 +68,26 @@ export default function Modal({
     return () => {
       document.removeEventListener("keydown", handleModalClose);
     };
-  }, [open, onClose]);
+  }, [open, closeModal]);
+
+  React.useEffect(() => {
+    if (open === true) document.body.style.overflow = "hidden";
+    if (open === false) document.body.style.overflow = "auto";
+  }, [open]);
 
   return (
     <div className={ModalWrapperClass}>
-      <Card className={ModalClass}>
+      <Card className={ModalClass} contentClass="flex flex-col gap-y-6">
+        <div className="text-right mb-2">
+          <button
+            className="ml-auto w-fit text-xl cursor-pointer"
+            onClick={closeModal}
+          >
+            &#x2715;
+          </button>
+        </div>
         {title && (
-          <div className="text-center mb-4">
+          <div>
             <Text as="p" variant="h3">
               {title}
             </Text>
@@ -63,16 +96,16 @@ export default function Modal({
 
         <div>{children}</div>
 
-        <div className="flex gap-x-2">
+        <div className="flex justify-center gap-x-2">
           {showConfirmButton && (
-            <Button color="green">
+            <Button color="green" onClick={confirmModalAction}>
               <FiThumbsUp />
               <span>{confirmButtonText}</span>
             </Button>
           )}
           {showDenyButton && (
-            <Button color="red">
-              <FiThumbsUp />
+            <Button color="red" onClick={closeModal}>
+              <FiThumbsDown />
               <span>{denyButtonText}</span>
             </Button>
           )}

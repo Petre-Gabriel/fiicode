@@ -11,11 +11,10 @@ import TableData from "@/components/core/TableData.component";
 import TableRow from "@/components/core/TableRow.component";
 import Text from "@/components/core/Text.component";
 import ClientGrid from "@/components/layout/ClientGrid.component";
-import { SendDeleteNotification } from "@/models/MedicalFile.model";
 import React from "react";
 import { FiCalendar, FiEdit, FiTrash } from "react-icons/fi";
 import DetailsListing from "./DetailsListing.component";
-import MedicalFile from "./MedicalFile.component";
+import MedicalFileCard from "./MedicalFileCard.component";
 
 export default function PatientProfile() {
   const [openDeleteModal, setOpenDeleteModal] = React.useState(false);
@@ -23,36 +22,19 @@ export default function PatientProfile() {
   return (
     <ClientGrid>
       <Modal
-        title="Test"
+        title="Sterge programarea"
         open={openDeleteModal}
+        showDenyButton={true}
+        denyButtonText="Cancel"
+        confirmButtonText="Delete"
         onClose={() => setOpenDeleteModal(false)}
       >
-        sdsdsds
+        Esti sigur ca vrei sa stergi programarea lui {DummyPatient.fullName} de
+        pe 3 Iulie 2022 la ora 14:30?
       </Modal>
 
       <div className="col-span-9 flex flex-col gap-y-8">
-        <Card title="Fisa medicala">
-          <MedicalFile
-            titleField={["Data", "Value"]}
-            fields={[
-              ["Nume complete", DummyPatient.fullName],
-              ["CNP", "5000000000000"],
-              ["Data nasterii", "03 Iulie 2004"],
-              ["Este suferind de", "Probleme cardiologocie"],
-            ]}
-          />
-
-          <Text className="mt-6 flex items-center gap-x-2">
-            Datele nu sunt corecte?{" "}
-            <Button
-              className="!text-primary !text-base font-medium !px-0 !py-0 hover:!bg-transparent"
-              tooltip="Editeaza datele pacientului"
-              color="none"
-            >
-              Editeaza-le!
-            </Button>
-          </Text>
-        </Card>
+        <MedicalFileCard />
 
         <Card
           title="Programari pacient"
@@ -60,10 +42,10 @@ export default function PatientProfile() {
         >
           <Divider className="mt-4 mb-6" />
 
-          <Table headCols={["#", "Ora programare", "Status", "Actiuni"]}>
+          <Table headCols={["#", "Data programare", "Status", "Actiuni"]}>
             <TableRow>
               <TableData className="font-bold">#1</TableData>
-              <TableData>14:30</TableData>
+              <TableData>3 Iulie 2022, 14:30</TableData>
               <TableData>
                 <Label color="red">Finalizata</Label>
               </TableData>

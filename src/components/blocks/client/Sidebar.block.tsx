@@ -71,6 +71,7 @@ export default function Sidebar() {
             active={isLinkActive("patients")}
             href="/client/patients"
             title="Pacienti"
+            label={{ text: "10" }}
             icon={FiUsers}
           />
           <SidebarLink

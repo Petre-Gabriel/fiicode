@@ -1,29 +1,79 @@
+"use client";
+
 import Patient, {
   DummyPatient,
 } from "@/components/client/patient/Patient.data";
 import Button from "@/components/core/Button.component";
 import Card from "@/components/core/Card.component";
 import Input from "@/components/core/Input.component";
+import Modal from "@/components/core/Modal.component";
 import Link from "next/link";
+import React from "react";
 import { FiCalendar, FiPlus, FiSearch, FiUser } from "react-icons/fi";
 
 export default function PatientsPage() {
+  const [newPacientModal, setNewPacientModal] = React.useState(false);
+
   return (
     <div>
+      <Modal
+        open={newPacientModal}
+        onClose={() => setNewPacientModal(false)}
+        title="Adauga un nou pacient"
+        confirmButtonText="Adauga noul pacient"
+      >
+        <div className="flex flex-col gap-y-4 text-left">
+          <Input
+            name="fullName"
+            label="Nume complet"
+            placeholder="Nume complet"
+          />
+          <Input name="email" label="Adresa email" placeholder="Adresa email" />
+          <Input name="securityNumber" label="CNP" placeholder="CNP" />
+          <Input name="height" label="Inaltime" placeholder="Inaltime" />
+          <Input
+            name="weight"
+            label="Greutate (kg)"
+            placeholder="Greutate (kg)"
+          />
+          <Input name="age" type="number" label="Varsta" placeholder="Varsta" />
+
+          <select value="-">
+            <option value="-" disabled>
+              Sex
+            </option>
+            <option value="Barbat">Barbat</option>
+            <option value="Femeie">Femeie</option>
+          </select>
+
+          <select value="-">
+            <option value="-" disabled>
+              Grupa sanguina
+            </option>
+            <option>O</option>
+            <option>A</option>
+            <option>B</option>
+            <option>AB</option>
+          </select>
+        </div>
+      </Modal>
+
       <Card title="Pacientii Dvs.">
         <div className="w-full">
           <div className="flex flex-col gap-y-4">
-            <Button color="green">
+            <Button color="green" onClick={() => setNewPacientModal(true)}>
               <FiPlus />
               Adauga un nou pacient
             </Button>
             <div className="flex gap-x-3 mb-4">
-              <Input
-                type="text"
-                name="pacientName"
-                placeholder="Cauta pacientul dupa nume sau email"
-                className="w-full"
-              />
+              <div className="w-full">
+                <Input
+                  type="text"
+                  name="pacientName"
+                  placeholder="Cauta pacientul dupa nume sau email"
+                  className="w-full"
+                />
+              </div>
               <Button>
                 <FiSearch />
               </Button>
