@@ -7,6 +7,8 @@ import Button from "@/components/core/Button.component";
 import Card from "@/components/core/Card.component";
 import Input from "@/components/core/Input.component";
 import Modal from "@/components/core/Modal.component";
+import Option from "@/components/core/Option.component";
+import Select from "@/components/core/Select.component";
 import Link from "next/link";
 import React from "react";
 import { FiCalendar, FiPlus, FiSearch, FiUser } from "react-icons/fi";
@@ -38,23 +40,23 @@ export default function PatientsPage() {
           />
           <Input name="age" type="number" label="Varsta" placeholder="Varsta" />
 
-          <select value="-">
-            <option value="-" disabled>
+          <Select name="sex" value="-">
+            <Option value="-" disabled>
               Sex
-            </option>
-            <option value="Barbat">Barbat</option>
-            <option value="Femeie">Femeie</option>
-          </select>
+            </Option>
+            <Option value="Barbat">Barbat</Option>
+            <Option value="Femeie">Femeie</Option>
+          </Select>
 
-          <select value="-">
-            <option value="-" disabled>
+          <Select name="bloodType" value="-">
+            <Option value="-" disabled>
               Grupa sanguina
-            </option>
-            <option>O</option>
-            <option>A</option>
-            <option>B</option>
-            <option>AB</option>
-          </select>
+            </Option>
+            <Option value="O">O</Option>
+            <Option value="A">A</Option>
+            <Option value="B">B</Option>
+            <Option value="AB">AB</Option>
+          </Select>
         </div>
       </Modal>
 

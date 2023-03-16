@@ -76,7 +76,7 @@ export default function Sidebar() {
           />
           <SidebarLink
             active={isLinkActive("medics")}
-            href="/client"
+            href="/client/medics"
             title="Medici"
             icon={FiActivity}
           />

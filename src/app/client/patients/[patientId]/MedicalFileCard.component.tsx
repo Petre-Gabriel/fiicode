@@ -56,7 +56,6 @@ export default function MedicalFileCard() {
                   <Input
                     name="birthDate"
                     placeholder="Data nasterii"
-                    value={"03.07.2004"}
                     type="date"
                     className="w-full"
                   />
